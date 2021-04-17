@@ -24,7 +24,7 @@ from stack import Stack, Node
 
 class StackMin(Stack):
     def __init__(self):
-        self.top = None
+        super().__init__()
         self.min = Stack()
     
     def push(self, item):
