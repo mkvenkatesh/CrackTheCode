@@ -13,50 +13,42 @@ class Node:
 class Queue:
     def __init__(self):
         self.back = None
+        self.front = None
     
     def add(self, item):
         print(f"Adding {item} to the back of the queue")
         new_node = Node(item)
-        new_node.next = self.back
+        if self.back:
+            self.back.next = new_node
         self.back = new_node
+        if not self.front:
+            self.front = self.back     
 
     def remove(self):
-        back = self.back
-        prev = self.back
-
-        if not back:
+        if not self.front:
             return None
-        elif back.next == None:
-            self.back = None
-            return back.data
         else:
-            while back.next != None:
-                prev = back
-                back = back.next
-                
-            prev.next = None
-            return back.data        
+            temp = self.front.data
+            self.front = self.front.next
+            return temp       
 
     def peek(self):
-        back = self.back
-        if not back:
+        if not self.front:
             return None
         else:
-            while back.next != None:
-                back = back.next
-            return back.data
+            return self.front.data
     
     def is_empty(self):
         return self.back == None
 
     def __str__(self):
         print_str = ["Queue: "]
-        back = self.back
-        while back != None:
-            print_str.append(str(back.data))
-            if back.next != None:
+        front = self.front
+        while front != None:
+            print_str.append(str(front.data))
+            if front.next != None:
                 print_str.append(", ")
-            back = back.next
+            front = front.next
         return "".join(print_str)
 
 if __name__ == "__main__":
