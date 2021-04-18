@@ -13,12 +13,14 @@ class Node:
 class Stack:
     def __init__(self):
         self.top = None
+        self.size = 0
     
     def push(self, item):
-        print(f"Pushing {item} into top of stack")
+        # print(f"Pushing {item} into top of stack")
         new_node = Node(item)
         new_node.next = self.top
         self.top = new_node
+        self.size += 1
     
     def pop(self):
         if not self.top:
@@ -26,6 +28,7 @@ class Stack:
         else:
             popped = self.top.data
             self.top = self.top.next
+            self.size -= 1
             return popped
     
     def peek(self):
