@@ -15,7 +15,7 @@ class Queue:
         self.back = None
         self.front = None
     
-    def add(self, item):
+    def enqueue(self, item):
         print(f"Adding {item} to the back of the queue")
         new_node = Node(item)
         if self.back:
@@ -24,7 +24,7 @@ class Queue:
         if not self.front:
             self.front = self.back     
 
-    def remove(self):
+    def dequeue(self):
         if not self.front:
             return None
         else:
@@ -54,21 +54,21 @@ class Queue:
 if __name__ == "__main__":
     q = Queue()
     print("Queue is empty? ", q.is_empty())
-    q.add(10)
+    q.enqueue(10)
     print("Peek Queue: ", q.peek())
     print("Queue is empty? ", q.is_empty())
     print(q)
-    print("Remove queue item: ", q.remove())
+    print("Remove queue item: ", q.dequeue())
     print(q)
-    q.add(10)
-    q.add(20)
-    q.add(30)
-    q.add(40)
+    q.enqueue(10)
+    q.enqueue(20)
+    q.enqueue(30)
+    q.enqueue(40)
     print(q)
-    print("Remove Queue: ", q.remove())
-    print("Remove Queue: ", q.remove())
+    print("Remove Queue: ", q.dequeue())
+    print("Remove Queue: ", q.dequeue())
     print("Peek Queue: ", q.peek())
-    print("Remove Queue: ", q.remove())
-    print("Remove Queue: ", q.remove())
-    print("Remove Queue: ", q.remove())
+    print("Remove Queue: ", q.dequeue())
+    print("Remove Queue: ", q.dequeue())
+    print("Remove Queue: ", q.dequeue())
     print(q)
