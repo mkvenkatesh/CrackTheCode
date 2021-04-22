@@ -101,7 +101,7 @@ class MinHeap:
 
         curr = len(heap) - 1
         while True:
-            parent = (curr//2) - 1
+            parent = (curr - 1) // 2
             if parent < 0:
                 break
             if heap[curr].data < heap[parent].data:

@@ -34,7 +34,7 @@ class MinHeap:
         if htype == 'up':
             node_idx = len(self.heap_array) - 1
             while node_idx > 0:
-                parent_idx = (node_idx//2)-1
+                parent_idx = (node_idx - 1) // 2
                 if self.heap_array[node_idx] < self.heap_array[parent_idx]:
                     self.heap_array[node_idx], self.heap_array[parent_idx] = self.heap_array[parent_idx], self.heap_array[node_idx]
                 node_idx = parent_idx
