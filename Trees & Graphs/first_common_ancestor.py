@@ -45,28 +45,18 @@ class BinaryTree:
     def find_common(self, root, node1, node2):
         node1_found = None
         node2_found = None
-        if root == node1:
-            return node1, None
-        elif root == node2:
-            return None, node2
+        if root == node1 or root == node2:
+            return root
         else:            
             if root.left != None:
-                ret1, ret2 = self.find_common(root.left, node1, node2)
-                if ret1 != None:
-                    node1_found = ret1
-                if ret2 != None:
-                    node2_found = ret2
+                node1_found = self.find_common(root.left, node1, node2)
             if root.right != None:                
-                ret1, ret2 = self.find_common(root.right, node1, node2)
-                if ret1 != None:
-                    node1_found = ret1
-                if ret2 != None:
-                    node2_found = ret2
+                node2_found = self.find_common(root.right, node1, node2)
 
-            if node1_found == node1 and node2_found == node2:
-                return root, root
+            if node1_found and node2_found:
+                return root
             else:
-                return node1_found, node2_found
+                return node1_found if node1_found != None else node2_found
 
 n0 = Node(1)
 n0.left = Node(2)
@@ -83,4 +73,4 @@ n0.left.left.left.right = Node(12)
 n0.left.right.right.left = Node(13)
 n0.left.right.right.left.left = Node(14)
 b = BinaryTree(n0)
-print(b.common_ancestor(n0, n0.right.right.right, n0.left.right)[0].data)
+print(b.common_ancestor(n0, n0.left.left, n0.left.left.left).data)
