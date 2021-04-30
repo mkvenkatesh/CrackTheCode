@@ -73,4 +73,8 @@ n0.left.left.left.right = Node(12)
 n0.left.right.right.left = Node(13)
 n0.left.right.right.left.left = Node(14)
 b = BinaryTree(n0)
-print(b.common_ancestor(n0, n0.left.left, n0.left.left.left).data)
+print(b.common_ancestor(n0, n0.left.left, n0.left.left.left).data) # 4
+print(b.common_ancestor(n0, n0.right.right.right, n0.left.left.left.left).data) #1
+print(b.common_ancestor(n0, n0.left.left.left, n0.left.right.right).data) #2
+print(b.common_ancestor(n0, n0.left.left, n0.left.right.right.left.left).data) #2
+print(b.common_ancestor(n0, n0.right.left, n0.right.right.right).data) #3
